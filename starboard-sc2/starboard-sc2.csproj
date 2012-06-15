@@ -77,6 +77,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.81.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\System.Data.SQLite\2010\bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml">
@@ -93,11 +97,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BooleanVisibilityConverter.cs" />
-    <Compile Include="MemoryReader\GameState.cs" />
-    <Compile Include="MemoryReader\MemoryReader.cs" />
-    <Compile Include="MemoryReader\Offsets.cs" />
-    <Compile Include="MemoryReader\Player.cs" />
-    <Compile Include="MemoryReader\Process.cs" />
+    <Compile Include="Automation\Database.cs" />
+    <Compile Include="Automation\GameState.cs" />
+    <Compile Include="Automation\MemoryReader.cs" />
+    <Compile Include="Automation\Offsets.cs" />
+    <Compile Include="Automation\Player.cs" />
+    <Compile Include="Automation\Process.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\PlayerColor.cs" />

@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using Starboard.Model;
 
-namespace Starboard.MemoryReader
+namespace Starboard.Automation
 {
     sealed class Player
     {
-        private int index;
         private uint offset;
 
         private Player(int index)
         {
-            this.index = index;
+            Index = index;
             offset = (uint)index * Offsets.PlayerLength + Offsets.PlayerTable;
         }
 
@@ -35,7 +34,7 @@ namespace Starboard.MemoryReader
             return result;
         }
 
-        public int Index { get { return index; } }
+        public int Index { get; private set; }
 
         public string Name
         {
@@ -79,9 +78,9 @@ namespace Starboard.MemoryReader
         {
             get
             {
-                if (index == 0) // invalid for Neutral
+                if (Index == 0) // invalid for Neutral
                     return PlayerColor.Unknown;
-                uint offset = Offsets.PlayerInfoLength * (uint)(index - 1) + Offsets.PlayerInfoTable;
+                uint offset = Offsets.PlayerInfoLength * (uint)(Index - 1) + Offsets.PlayerInfoTable;
                 var argbColor = Process.ReadUInt(offset + 0x70C);
                 switch (argbColor)
                 {

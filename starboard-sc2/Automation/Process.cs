@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Text;
 
-namespace Starboard.MemoryReader
+namespace Starboard.Automation
 {
     static class Process
     {
@@ -41,9 +41,13 @@ namespace Starboard.MemoryReader
         {
             get
             {
-                if (SC2Process != null && !SC2Process.HasExited)
-                    return SC2Process.MainModule.FileVersionInfo.FilePrivatePart;
-                else return -1;
+                try
+                {
+                    if (SC2Process != null && !SC2Process.HasExited)
+                        return SC2Process.MainModule.FileVersionInfo.FilePrivatePart;
+                    else return -1;
+                }
+                catch (Exception) { return -1; }
             }
         }
 
