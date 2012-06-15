@@ -11,9 +11,11 @@ namespace Starboard.ViewModel
 {
     using System;
     using System.Windows;
+    using System.Windows.Threading;
 
     using Starboard.MVVM;
     using Starboard.View;
+    using Starboard.MemoryReader;
 
     /// <summary> The view model for the main application window. </summary>
     public class MainWindowViewModel : ObservableObject
@@ -73,6 +75,11 @@ namespace Starboard.ViewModel
                 display.SetValue(Window.TopProperty, this.settings.Position.Y);
                 display.SetValue(Window.LeftProperty, this.settings.Position.X);
             }
+
+            var t = new DispatcherTimer();
+            t.Interval = TimeSpan.FromMilliseconds(500);
+            t.Tick += new EventHandler(MemoryReader.Tick);
+            t.Start();
         }
 
         /// <summary>   Gets or sets the active display window being used. </summary>

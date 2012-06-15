@@ -93,6 +93,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\BooleanVisibilityConverter.cs" />
+    <Compile Include="MemoryReader\GameState.cs" />
+    <Compile Include="MemoryReader\MemoryReader.cs" />
+    <Compile Include="MemoryReader\Offsets.cs" />
+    <Compile Include="MemoryReader\Player.cs" />
+    <Compile Include="MemoryReader\Process.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\PlayerColor.cs" />
