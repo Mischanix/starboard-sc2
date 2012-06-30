@@ -153,26 +153,14 @@ namespace Starboard.Automation
 
             Model.Player p1 = scoreboard.Player1;
             Model.Player p2 = scoreboard.Player2;
-            if (String.Compare(player1Name, player2Name, true) < 0)
-            {
-                p1.Name = db.DisplayName(player1Name) ?? player1Name;
-                p1.Race = db.DisplayRace(player1Name) ?? player1.Race;
-                p1.Color = player1.Color;
 
-                p2.Name = db.DisplayName(player2Name) ?? player2Name;
-                p2.Race = db.DisplayRace(player2Name) ?? player2.Race;
-                p2.Color = player2.Color;
-            }
-            else
-            {
-                p1.Name = db.DisplayName(player2Name) ?? player2Name;
-                p1.Race = db.DisplayRace(player2Name) ?? player2.Race;
-                p1.Color = player2.Color;
+            p1.Name = db.DisplayName(player1Name) ?? player1Name;
+            p1.Race = db.DisplayRace(player1Name) ?? player1.Race;
+            p1.Color = player1.Color;
 
-                p2.Name = db.DisplayName(player1Name) ?? player1Name;
-                p2.Race = db.DisplayRace(player1Name) ?? player1.Race;
-                p2.Color = player1.Color;
-            }
+            p2.Name = db.DisplayName(player2Name) ?? player2Name;
+            p2.Race = db.DisplayRace(player2Name) ?? player2.Race;
+            p2.Color = player2.Color;
         }
 
         /// <summary>
