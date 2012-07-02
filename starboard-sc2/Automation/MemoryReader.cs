@@ -107,11 +107,16 @@ namespace Starboard.Automation
             {
                 try
                 {
-                    if (GameState.IsObserver())
-                        db.UpdateDisplayName(
-                            Player.GetCurrentPlayers()
-                            .First(n => n.Color == p.Color)
-                            .Name, p.Name );
+                    if (p.Name != String.Empty && GameState.IsObserver())
+                    {
+                        var players = Player.GetCurrentPlayers();
+                        if (players.TrueForAll(n => db.DisplayName(n.Name) != p.Name))
+                        {
+                            db.UpdateDisplayName(
+                                players.First(n => n.Color == p.Color).Name,
+                                p.Name);
+                        }
+                    }
                 }
                 catch (InvalidOperationException)
                 {
@@ -126,11 +131,16 @@ namespace Starboard.Automation
             {
                 try
                 {
-                    if (GameState.IsObserver())
-                        db.UpdateDisplayRace(
-                            Player.GetCurrentPlayers()
-                            .First(n => n.Color == p.Color)
-                            .Name, p.Race );
+                    if (p.Race != Model.Race.Unknown && GameState.IsObserver())
+                    {
+                        var players = Player.GetCurrentPlayers();
+                        if (players.TrueForAll(n => db.DisplayName(n.Name) != p.Name))
+                        {
+                            db.UpdateDisplayRace(
+                                players.First(n => n.Color == p.Color).Name,
+                                p.Race);
+                        }
+                    }
                 }
                 catch (InvalidOperationException)
                 {
